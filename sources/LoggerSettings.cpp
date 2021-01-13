@@ -8,7 +8,7 @@ void init() {
   // trace и info
   auto fileLoggerTrace = boost::log::add_file_log(
       boost::log::keywords::file_name =
-          "/Users/semenpoletin/Labs/logs/"
+          "/Users/semenpoletin/Labs/3sem/lab-06-multithreads/logs/"
           "loggerFileTrace_%N.log",
       boost::log::keywords::rotation_size = 10 * 1024 * 1024,
       boost::log::keywords::format =
@@ -17,7 +17,7 @@ void init() {
   // info
   auto fileLoggerInfo = boost::log::add_file_log(
       boost::log::keywords::file_name =
-          "/Users/semenpoletin/3sem/lab-06-multithreads/logs/"
+          "/Users/semenpoletin/Labs/3sem/lab-06-multithreads/logs/"
           "loggerFileInfo.log",
       boost::log::keywords::format =
           "[%TimeStamp%][%Severity%][%ThreadID%]: %Message%");
@@ -32,6 +32,6 @@ void init() {
                               boost::log::trivial::trace);
   fileLoggerInfo->set_filter(boost::log::trivial::severity ==
                              boost::log::trivial::info);
-  consoleLogger->set_filter(boost::log::trivial::severity ==
-                            boost::log::trivial::info);
+  consoleLogger->set_filter(boost::log::trivial::severity >=
+                            boost::log::trivial::trace);
 }

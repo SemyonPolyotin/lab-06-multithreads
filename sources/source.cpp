@@ -65,7 +65,8 @@ void findHash(const int& argc, char* argv[]) {
       makeJSON = true;
       break;
     default:
-      throw std::out_of_range("Invalid number of arguments!");
+      int args = argc;
+      throw std::out_of_range("Invalid number of arguments!" + std::to_string(args));
   }
   init();
   // Добавление распространенных атрибутов в лог
@@ -89,4 +90,9 @@ void findHash(const int& argc, char* argv[]) {
     std::ofstream fout{json_path};
     fout << json_obj;
   }
+}
+
+int main(int argc, char* argv[]) {
+  findHash(argc, argv);
+  return 0;
 }
